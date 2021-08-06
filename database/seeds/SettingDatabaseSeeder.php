@@ -25,10 +25,10 @@ class SettingDatabaseSeeder extends Seeder
             'outer_shipping_cost'=>0,
             'free_shipping_cost'=>0,
             'translatable'=>[
-                'store_name'=>'mutasem store',
-                'free_shipping_label'=>'Free shipping',
-                'local_label'=>'Local shipping',
-                'outer_label'=>'Outer shipping',
+                'store_name'=>'كنده ستور',
+                'free_shipping_label'=>'توصيل مجاني',
+                'local_label'=>'توصيل داخل عمان',
+                'outer_label'=>'توصيل خارج عمان',
 
             ],
 

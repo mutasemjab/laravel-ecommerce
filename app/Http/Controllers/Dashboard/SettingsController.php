@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\shippingRequest;
 use App\Models\Setting;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class SettingsController extends Controller
 {
@@ -22,7 +24,22 @@ class SettingsController extends Controller
 
     }
 
-    public function updateshippingmethods(Request $request,$id){
+    public function updateshippingmethods(shippingRequest $request,$id){
+
+        try {
+            $shipping_method = Setting::find($id);
+            DB::beginTransaction();
+            $shipping_method-> update(['plain_value'=>$request->plain_value]);
+
+            $shipping_method->value = $request->value;
+            $shipping_method->save();
+            DB::commit();
+            return redirect()->back()->with(['success'=>'تم التحديث بنجاح']);
+        }catch (\Exception $e){
+            return redirect()->back()->with(['error'=>'هناك خطأ في تحديث البيانات ']);
+            DB::rollBack();
+        }
+
 
     }
 }
