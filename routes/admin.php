@@ -29,7 +29,10 @@ Route::group(['namespace' => 'Dashboard','middleware' => 'auth:admin','prefix'=>
        Route::get('shipping-method/{type}','SettingsController@editshippingmethods')->name('edit.shipping.method');
        Route::put('shipping-method/{id}','SettingsController@updateshippingmethods')->name('update.shipping.method');
    });
-
+    Route::group(['prefix'=>'profile'],function (){
+        Route::get('edit','ProfileController@editProfile')->name('edit.profile');
+        Route::put('update','ProfileController@updateProfile')->name('update.profile');
+    });
 });
 
 

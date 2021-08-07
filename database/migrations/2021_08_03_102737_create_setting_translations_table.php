@@ -13,10 +13,11 @@ class CreateSettingTranslationsTable extends Migration
      */
     public function up()
     {
+
         Schema::create('setting_translations', function (Blueprint $table) {
            $table->increments('id');
            $table->integer('setting_id')->unsigned()->unique();
-           $table->string('locale')->unique();
+           $table->string('locale');
            $table->longText('value')->nullable();
            $table->foreign('setting_id')->references('id')->on('settings')->onDelete('cascade');
         });
